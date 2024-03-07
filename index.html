@@ -295,7 +295,7 @@
         // cài đặt chung
         let gamePlaying = false;
         const gravity = .5;
-        const speed = 1;
+        const speed = 3;
         const size = [51, 36];
         const jump = -9;
         const cTenth = (canvas.width / 10);
@@ -361,12 +361,14 @@
                         pipe[1] > flyHeight || pipe[1] + pipeGap < flyHeight + size[1]
                     ].every(elem => elem)) {
                         gamePlaying = false;
+                        document.getElementById('startButton').style.display = 'none';
                         document.getElementById('gameOverPopup').style.display = 'block';
                         document.getElementById('finalScore').innerText = currentScore;
                     }
 
                     // Khi nút "Chơi lại" được nhấn
                     document.getElementById('playAgainButton').addEventListener('click', function () {
+                        document.getElementById('startButton').style.display = 'none';
                         document.getElementById('gameOverPopup').style.display = 'none';
                         gamePlaying = true; // Khởi động lại trò chơi
                         setup();
