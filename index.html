@@ -301,12 +301,11 @@
         const cTenth = (canvas.width / 10);
 
         let index = 0,
-            bestScore = 0,
+            bestScore = localStorage.getItem('bestScore') || 0,
             flight,
             flyHeight,
             currentScore,
             pipe;
-
         // cài đặt ống
         const pipeWidth = 78;
         const pipeGap = 270;
@@ -326,7 +325,7 @@
         const render = () => {
             // làm cho ống và chim di chuyển
             index++;
-
+            localStorage.setItem('bestScore', bestScore);
             // phần nền đầu tiên
             ctx.drawImage(img, 0, 0, canvas.width, canvas.height, -((index * (speed / 2)) % canvas.width) + canvas.width, 0, canvas.width, canvas.height);
             // phần nền thứ hai
